@@ -12,6 +12,6 @@ RUN apt-get update && apt-get install -y ffmpeg
 COPY . /
 COPY --from=builder /tE-backend /te-temp
 COPY --from=builder /translationExchange /te-temp/tRecorderApi/frontend
-RUN pip install -r /config/requirements.txt
+RUN pip install -r /requirements.txt
 VOLUME [ "/var/www/html/tE-backend" ]
 WORKDIR /var/www/html/tE-backend/tRecorderApi
