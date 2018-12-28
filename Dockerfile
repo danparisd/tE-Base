@@ -10,8 +10,8 @@ RUN echo "deb http://httpredir.debian.org/debian jessie-backports main non-free\
 RUN echo "deb-src http://httpredir.debian.org/debian jessie-backports main non-free\n" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y ffmpeg
 COPY . /
-COPY --from=builder /tE-backend /te-temp
-COPY --from=builder /translationExchange /te-temp/tRecorderApi/frontend
+COPY --from=builder /tE-backend /var/www/html/tE-backend
+COPY --from=builder /translationExchange /var/www/html/tE-backend/tRecorderApi/frontend
 RUN pip install -r /requirements.txt
 VOLUME [ "/var/www/html/tE-backend" ]
 WORKDIR /var/www/html/tE-backend/tRecorderApi
