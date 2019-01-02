@@ -12,5 +12,5 @@ raven
 celery
 redis
 flower
-drf-yasg
+drf-yasg~=1.11.1
 rest-social-auth
