@@ -3,9 +3,7 @@ RUN apt-get update && apt-get install -y git && git clone https://github.com/wyc
 WORKDIR /translationExchange
 RUN npm link cross-env && npm install --production && npm run build
 
-FROM python:3.7-slim-stretch
-ENV PYTHONUNBUFFERED 1
-ENV NODE_ENV production 
+FROM python:3.7-slim-stretch 
 RUN echo "deb http://httpredir.debian.org/debian jessie-backports main non-free\n" >> /etc/apt/sources.list
 RUN echo "deb-src http://httpredir.debian.org/debian jessie-backports main non-free\n" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y ffmpeg
@@ -13,5 +11,5 @@ COPY . /
 COPY --from=builder /tE-backend /var/www/html/tE-backend
 COPY --from=builder /translationExchange /var/www/html/tE-backend/tRecorderApi/frontend
 RUN pip install -r /requirements.txt
-VOLUME [ "/var/www/html/tE-backend" ]
+VOLUME [ "/var/www/html/tE-backend/tRecorderApi/media" ]
 WORKDIR /var/www/html/tE-backend/tRecorderApi
