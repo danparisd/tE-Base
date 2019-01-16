@@ -3,7 +3,7 @@ RUN apt-get update && apt-get install -y git && git clone https://github.com/wyc
 WORKDIR /translationExchange
 RUN npm link cross-env && npm install --production && npm run build
 
-FROM python:3.6-slim-stretch
+FROM python:3.7-slim-stretch
 ENV PYTHONUNBUFFERED 1
 ENV NODE_ENV production 
 RUN echo "deb http://httpredir.debian.org/debian jessie-backports main non-free\n" >> /etc/apt/sources.list
